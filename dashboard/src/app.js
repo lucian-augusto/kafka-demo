@@ -39,7 +39,7 @@ app.get("/invoice/generate", function (req, res) {
     await producer.send({
       topic: "generate-invoice",
       messages: [
-        { value: "Hello KafkaJS user2!" },
+        { value: "Gerar Nota fiscal" },
       ],
     })
   }
@@ -53,7 +53,7 @@ app.get("/score/calculate", function (req, res) {
     await producer.send({
       topic: "calculate-score",
       messages: [
-        { value: "Hello KafkaJS user2!" },
+        { value: "Calcular score" },
       ],
     })
   }
