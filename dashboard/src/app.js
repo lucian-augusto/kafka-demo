@@ -14,7 +14,7 @@ const port = 3000;
 
 const run = async () => {
   await consumer.connect()
-  await consumer.subscribe({ topics: ["test-topic", "score"], fromBeginning: true })
+  await consumer.subscribe({ topics: ["invoice-generated", "score-calculated"], fromBeginning: true })
 
   await consumer.run({
     eachMessage: async ({ topic, message }) => {
@@ -37,7 +37,7 @@ app.get("/invoice/generate", function (req, res) {
   const send = async () => {
     await producer.connect()
     await producer.send({
-      topic: "test-topic",
+      topic: "generate-invoice",
       messages: [
         { value: "Hello KafkaJS user2!" },
       ],

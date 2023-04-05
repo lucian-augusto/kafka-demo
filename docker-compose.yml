@@ -61,6 +61,20 @@ services:
       - zookeeper
       - broker
 
+  invoice-generator:
+    build:
+      context: invoice-generator
+    container_name: invoice-generator
+    entrypoint: /bin/bash
+    volumes:
+      - ./invoice-generator:/usr/src/invoice-generator
+    tty: true
+    networks:
+      - kafka_network
+    depends_on:
+      - zookeeper
+      - broker
+
 networks:
   kafka_network:
     driver: bridge
